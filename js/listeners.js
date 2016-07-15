@@ -3,7 +3,7 @@ myevent.watch(function(error, result){
     if (!error){
       console.log(" ")
       console.log("***************************************************************************************");
-      console.log("machineID:" + result.args.machineID + " recieved payment. amount:" + result.args.amount);
+      console.log("machineID:" + result.args.machineID + " recieved payment. amount:" + web3.fromWei(result.args.amount));
       console.log("***************************************************************************************");
     }
     else {
@@ -30,7 +30,7 @@ routedEvent.watch(function(error, result){
     if (!error){
       console.log(" ")
       console.log("***************************************************************************************");
-      console.log("Payment of " + result.args.amount + " routed to:" + result.args.routedAddress);
+      console.log("Payment of " + web3.fromWei(result.args.amount) + " ether routed to:" + result.args.routedAddress);
       console.log("***************************************************************************************");
     }
     else {
@@ -45,7 +45,7 @@ newProductEvent.watch(function(error, result){
       console.log("***************************************************************************************");
       console.log("Registered New Product for Vendor: " + result.args.vendorID);
       console.log("ID: " + result.args.productID);
-      console.log("Price: "+ result.args.price);
+      console.log("Price: "+ web3.fromWei(result.args.price)) + " ether";
       console.log("***************************************************************************************");
 
     }
@@ -61,7 +61,7 @@ addProductToMachineEvent.watch(function(error, result){
       console.log("***************************************************************************************");
       console.log("Registered Product in New Machine: " + result.args.newMachineID);
       console.log("Product ID: " + result.args.productID);
-      console.log("Price: "+ result.args.productPrice);
+      console.log("Price: "+ web3.fromWei(result.args.productPrice)) + " ether";
       console.log("***************************************************************************************");
 
     }
@@ -76,7 +76,7 @@ priceUpdateEvent.watch(function(error, result){
       console.log(" ")
       console.log("***************************************************************************************");
       console.log("Product Updated...ID: " + result.args._productID);
-      console.log("New Price: "+ result.args._newPrice);
+      console.log("New Price: "+ web3.fromWei(result.args._newPrice)) + " ether";
       console.log("***************************************************************************************");
 
     }
@@ -92,8 +92,9 @@ priceUpdateEvent.watch(function(error, result){
 var paymentReceived = myvendor.PaymentReceived();
 paymentReceived.watch(function(error, result){
     if (!error){
+      console.log(" ");
       console.log("***************************************************************");
-      console.log("!!!   Payment Received from: " + result.args.from + " amount: "+ result.args.amount +"!!");
+      console.log("Payment Received from: " + result.args.from + " amount: "+ web3.fromWei(result.args.amount) + " ether");
       console.log("***************************************************************");
     }
     else {
@@ -104,8 +105,9 @@ paymentReceived.watch(function(error, result){
 var paymentRejected = myvendor.PaymentRejected();
 paymentRejected.watch(function(error, result){
     if (!error){
+      console.log(" ");
       console.log("***************************************************************");
-      console.log("!!!   Payment Rejected from: " + result.args.from + " amount: "+ result.args.amount +"!!");
+      console.log("!!!   Payment Rejected from: " + result.args.from + " amount: "+ web3.fromWei(result.args.amount) + " ether");
       console.log("***************************************************************");
     }
     else {
@@ -116,9 +118,10 @@ paymentRejected.watch(function(error, result){
 var paymentSent = myvendor.PaymentSent();
 paymentSent.watch(function(error, result){
     if (!error){
+      console.log(" ");
       console.log("***************************************************************");
-      console.log("Payment Sent to Vendor: " + result.args.vendor + " amount: "+ result.args.vendorAmount +"!!");
-      console.log("Payment Sent to SF    : " + result.args.sf + " amount: "+ result.args.sfamount +"!!");
+      console.log("Payment Sent to Vendor: " + result.args.vendor + " amount: "+ web3.fromWei(result.args.vendorAmount) + " ether");
+      console.log("Payment Sent to SF    : " + result.args.sf + " amount: "+ web3.fromWei(result.args.sfamount) + " ether");
       console.log("***************************************************************");
     }
     else {
@@ -130,8 +133,22 @@ paymentSent.watch(function(error, result){
 var contractSigned = myvendor.ContractSigned();
 contractSigned.watch(function(error, result){
     if (!error){
+      console.log(" ");
       console.log("***************************************************************");
       console.log("Contract Signed: " + result.args.from +"!!");
+      console.log("***************************************************************");
+    }
+    else {
+      console.log("oops something went wrong...")
+    }
+});
+
+var expiredEvent = myvendor.Expired();
+expiredEvent.watch(function(error, result){
+    if (!error){
+      console.log(" ");
+      console.log("***************************************************************");
+      console.log("Contract Signed: " + result.args.signed +"!!");
       console.log("***************************************************************");
     }
     else {
