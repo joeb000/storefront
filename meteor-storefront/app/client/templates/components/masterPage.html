@@ -1,0 +1,227 @@
+<template name="components_masterPage">
+        <h3 id="controlPanelH1">
+          Master Contract - Control Panel
+        </h3>
+            {{#with TemplateVar.get 'state'}}
+                {{#if isError}}
+                    <div class="alert alert-warning">
+                        There was an error deploying your contract.
+                        The error was: "{{error}}".
+                    </div>
+                {{/if}}
+                {{#if isNotAddressed}}
+
+                <label>
+                    Please paste in Master Contract Address:
+                </label>
+
+                <input type="text"
+                        id="masterContractAddress"
+                        class="form-control"
+                        placeholder="0xb9f7426d69049443d6408033b88d1d088522fb14" />
+                <br />
+                <button type="button" data-action="findContract" class="btn btn-default btn-deploy">
+                    GO TO CONTRACT!
+                </button>
+
+                {{/if}}
+                {{#if isMining}}
+                    <div class="alert alert-info">
+                        Your contract is being mined...
+                        <span class="badge text-right">
+                            <i class="fa fa-cog fa-spin"></i>
+                        </span>
+                    </div>
+                {{/if}}
+
+                {{#if contractExists}}
+                <div class="row-fluid">
+               	<div class="col-md-6">
+                <div class="panel panel-default panel-dapp">
+                  <div class="panel-body">
+                  <label>
+                      Create New Machine
+                  </label>
+
+                  <input type="text"
+                          id="machineNickname"
+                          class="form-control"
+                          placeholder="Nickname" /> <br/>
+                  <button type="button" data-action="createMachine" class="btn btn-default btn-deploy">
+                      Create Machine!
+                  </button>
+                </div>
+              </div>
+
+
+              <div class="panel panel-default panel-dapp">
+                <div class="panel-body">
+                <label>
+                    Add Product To Inventory
+                </label>
+                <input type="text"
+                        id="addProductName"
+                        class="form-control"
+                        placeholder="Product Name" /> <br/>
+                <input type="text"
+                        id="addVendorID"
+                        class="form-control"
+                        placeholder="Vendor Contract Address" /> <br/>
+                <input type="text"
+                        id="addProductPrice"
+                        placeholder="  Price" /> <label>ether</label><br/><br/>
+                <button type="button" data-action="addProduct" class="btn btn-default btn-deploy">
+                    Add Product!
+                </button>
+              </div>              </div>
+
+            </div>
+          </div>
+
+
+          <div class="row-fluid">
+          <div class="col-md-6">
+              <div class="panel panel-default panel-dapp">
+              <div class="panel-body">
+              <label>
+                  Add Product To Machine
+              </label>
+
+              <input type="text"
+                      id="stockMachineID"
+                      class="form-control"
+                      placeholder="Machine ID" /> <br/>
+
+              <input type="text"
+                      id="stockProductID"
+                      class="form-control"
+                      placeholder="Product Number" /> <br/>
+              <button type="button" data-action="stockMachine" class="btn btn-default btn-deploy">
+                  Stock it!
+              </button>
+            </div>            </div>
+
+            <div class="panel panel-default panel-dapp">
+            <div class="panel-body">
+            <label>
+                Update Price
+            </label>
+            <input type="text"
+                    id="updateProductID"
+                    class="form-control"
+                    placeholder="Product Number" /> <br/>
+            <input type="text"
+                    id="updateProductPrice"
+                    placeholder="  Price" /> <label>ether</label><br/><br/>
+            <button type="button" data-action="updateProduct" class="btn btn-default btn-deploy">
+                Update Product!
+            </button>
+          </div>          </div>
+
+        </div>
+      </div>
+                {{/if}}
+            {{/with}}
+
+
+    <div class="panel panel-default panel-dapp">
+
+        <div class="panel-heading">
+          Master Inventories
+        </div>
+        <div class="panel-body">
+            {{#with TemplateVar.get 'state'}}
+                {{#if contractExists}}
+                <br />
+                <style>
+                  table {
+                      font-family: arial, sans-serif;
+                      border-collapse: collapse;
+                      width: 100%;
+                  }
+
+                  td, th {
+                      border: 1px solid #514441;
+                      text-align: left;
+                      padding: 8px;
+                  }
+
+                  tr:nth-child(odd) {
+                      background-color: #dddddd;
+                  }
+                  </style>
+
+
+                  <label>
+                      Machines:
+                  </label>
+                <table id="machineTable">
+                  <tr>
+                    <td>Machine ID:</td>
+                    <td>Nickname:</td>
+                  </tr>
+                </table>
+                <br>
+
+                <label>
+                    Products:
+                </label>
+                <table id="productTable">
+                  <tr>
+                    <td>Name:</td>
+                    <td>Product ID:</td>
+                    <td>Price (ether):</td>
+                    <td>VendorID</td>
+                  </tr>
+                </table>
+
+                <br>
+
+                {{/if}}
+
+            {{/with}}
+          </div>
+
+    </div>
+
+    <div class="panel panel-default panel-dapp">
+
+        <div class="panel-heading">
+          Create Custom Vendor Contract
+        </div>
+        <div class="panel-body">
+          <label>Contract Cycle:</label>
+          <input type="text"
+                  id="vendorCycle"
+                  size="3"
+                  placeholder="  26" /> <label>days</label><br/>
+          <label>Fee / Cycle:</label>
+          <input type="text"
+                  id="vendorFee"
+                  size="3"
+                  placeholder="3" /> <label>ether</label><br/>
+          <label>% to Vendor:</label>
+          <input type="text"
+                  id="vendorPercent"
+                  size="2"
+                  placeholder="90" /> <label>%</label><br/>
+          <label>IPFS Hash:</label>
+          <input type="text"
+                  size="63"
+                  id="vendorIPFSHash"
+                  placeholder="QmRqEErRGhTp1B4ye5EtJN1xgdAkKXW4g1x93BKfAqV9jC" /> <br/>
+          <label>Vendor Payout Address:</label>
+          <input type="text"
+                  size="50"
+                  id="vendorAddress"
+                  placeholder="0x4ac21ce5aab536b44172b35ebc34fc2e5d598f97" /> <br/>
+        <br/>
+          <button type="button" data-action="createVendorContract" class="btn btn-default btn-deploy">
+              Create Contract!
+          </button>
+          <br/>
+           <label id="newVendorLabel"></label>
+        </div>
+
+    </div>
+</template>

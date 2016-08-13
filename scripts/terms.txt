@@ -1,0 +1,13 @@
+Date: 07/13/2016
+
+Sample Contractual Agreement:
+
+Party 1: VendorCompany 1
+Party 2: StoreFront Manager
+
+This is a legally binding document which outlines terms of agreement between both above mentioned parties. This document will be encrypted, hashed, and stored on IPFS where it can easily be referenced and viewed by both signing parties.
+
+This document will include solidity source code of the Vendor Agreement Template smart contract as well as the parameters which will be passed to this contract when initialized.
+
+By executing the contract signContract() method from the pre-determined account address, both parties provide their legal signatures.
+

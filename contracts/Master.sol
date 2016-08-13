@@ -1,13 +1,12 @@
 import "machine.sol";
 
-contract MasterContract {
+contract Master {
     event MachinePayed(address machineID, uint amount);
     event ContractCreated(address newMachineID);
     event PaymentRouted(address routedAddress, uint amount);
     event NewProductAdded(address vendorID,uint productID, uint price);
     event AddedProductToMachine(address newMachineID, uint productID, uint productPrice);
     event PriceUpdated(uint _productID, uint _newPrice);
-
 
     address public admin;
     uint ownerCounter=0;
@@ -87,6 +86,4 @@ contract MasterContract {
         }
         return true;
     }
-
-
 }

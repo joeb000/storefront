@@ -1,0 +1,143 @@
+<template name="components_vendorContract">
+    <div class="panel panel-default panel-dapp">
+        <div class="panel-heading">
+          Vendor Contract
+        </div>
+        <div class="panel-body">
+            {{#with TemplateVar.get 'state'}}
+                {{#if isError}}
+                    <div class="alert alert-warning">
+                        There was an error deploying your contract.
+                        The error was: "{{error}}".
+                    </div>
+                {{/if}}
+                {{#if isNotAddressed}}
+                <label>
+                    Please paste in Vendor Contract Address:
+                </label>
+
+                <input type="text"
+                        id="vendorContractAddress"
+                        class="form-control"
+                        placeholder="0xb9f7426d69049443d6408033b88d1d088522fb14" />
+                <br />
+                <button type="button" data-action="findContract" class="btn btn-default btn-deploy">
+                    GO TO CONTRACT!
+                </button>
+
+                {{/if}}
+                {{#if isMining}}
+                    <div class="alert alert-info">
+                        Your contract is being mined...
+                        <span class="badge text-right">
+                            <i class="fa fa-cog fa-spin"></i>
+                        </span>
+                    </div>
+                {{/if}}
+
+                {{#if contractExists}}
+                <label>
+                    Terms of Vendor Contract at address:
+                    <span>{{TemplateVar.get 'contractAddr'}}</span>
+                </label>
+                <hr />
+
+                <label>
+                    Contract State:   <span id="conState">{{TemplateVar.get 'aContractState'}}</span>
+                </label>
+                <br />
+                <label>
+                    Contract End Date:   <span id="conEnd">{{TemplateVar.get 'aCycleEndDate'}}</span>
+                </label>
+                <br />
+                <label>
+                    Fee:   <span>{{TemplateVar.get 'aFee'}} ether</span>
+                </label>
+                <br />
+
+                <label>
+                    Cycle:   <span>{{TemplateVar.get 'aCycle'}}</span>
+                </label>
+
+                <br />
+
+                <label>
+                    Receive Address:   <span>{{TemplateVar.get 'aReceiver'}}</span>
+                </label>
+
+                <br />
+
+                <label>
+                    Vendor Percentage:   <span>{{TemplateVar.get 'aPercent'}}%</span>
+                </label>
+
+                <br />
+
+                <label>
+                    IPFS hash:   <a href="https://ipfs.io/ipfs/{{TemplateVar.get 'aIPFSHash'}}"><span>{{TemplateVar.get 'aIPFSHash'}}</span></a>
+                </label>
+                <hr />
+
+
+                <button type="button" data-action="signContract" class="btn btn-default btn-deploy">
+                  Sign Contract! </button>
+                  <button type="button" data-action="refreshStatus" class="btn btn-default btn-deploy">
+                    Refresh Status </button>
+
+                {{/if}}
+            {{/with}}
+        </div>
+    </div>
+
+
+    <div class="panel panel-default panel-dapp">
+
+        <div class="panel-heading">
+          Vendor Events...
+        </div>
+        <div class="panel-body">
+            {{#with TemplateVar.get 'state'}}
+                {{#if contractExists}}
+                <br />
+                <style>
+                  table {
+                      font-family: arial, sans-serif;
+                      border-collapse: collapse;
+                      width: 100%;
+                  }
+
+                  td, th {
+                      border: 1px solid #514441;
+                      text-align: left;
+                      padding: 8px;
+                  }
+
+                  tr:nth-child(odd) {
+                      background-color: #dddddd;
+                  }
+                  </style>
+                <table id="signedTable">
+                  <tr>
+                    <td>Signator:</td>
+                    <td>Date Stamp:</td>
+                  </tr>
+                </table>
+                <br>
+                <table id="paymentTable">
+                  <tr>
+                    <td>Product ID:</td>
+                    <td>Machine ID:</td>
+                    <td>Payed Amount:</td>
+                    <td>Date Stamp:</td>
+                  </tr>
+                </table>
+
+                <br>
+
+                {{/if}}
+
+            {{/with}}
+          </div>
+
+    </div>
+</template>

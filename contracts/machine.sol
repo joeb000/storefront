@@ -10,16 +10,13 @@ contract machine {
 
     function () {
         throw;
-         //if (master.send(msg.value)) {
-         //    MasterContract(master).deposit(dummyProductID);
-        // }
     }
 
     function payForProduct(uint _productID) returns (bool) {
         if (msg.value<productPrices[_productID])
         throw;
         //only send the product price worth to the master
-        MasterContract(master).deposit.value(productPrices[_productID])(_productID);
+        Master(master).deposit.value(productPrices[_productID])(_productID);
         uint remaining = msg.value - productPrices[_productID];
 
         //refund the rest to customer (minus a tiny processing fee which stays in the machine)

@@ -1,4 +1,4 @@
-// loadScript("/Users/joeb/Desktop/IDEO/Storefront/scripts/shortcuts.js");
+//  loadScript("/Users/joeb/Workspaces/eth/storefront/js/shortcuts.js");
 
 var balances = function() {
   console.log("eth.accounts[0]: " + web3.fromWei(eth.getBalance(eth.accounts[0])));
@@ -13,11 +13,12 @@ var balances = function() {
 
 var unlock = function() {
   personal.unlockAccount(eth.accounts[0],"joe123",900000);
-  personal.unlockAccount(eth.accounts[1],"Liberty",900000);
-  personal.unlockAccount(eth.accounts[2],"Progressive",900000)
-  personal.unlockAccount(eth.accounts[3],"crash",900000);
-  personal.unlockAccount(eth.accounts[4],"joe123",900000);
+  personal.unlockAccount(eth.accounts[1],"joe123",900000);
+  personal.unlockAccount(eth.accounts[2],"Liberty",900000);
+  personal.unlockAccount(eth.accounts[3],"Progressive",900000)
+  personal.unlockAccount(eth.accounts[4],"crash",900000);
   personal.unlockAccount(eth.accounts[5],"joe123",900000);
+  personal.unlockAccount(eth.accounts[6],"joe123",900000);
 
 }
 

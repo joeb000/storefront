@@ -1,0 +1,47 @@
+# Meteor packages used by this project, one per line.
+# Check this file (and the other files in this directory) into your repository.
+#
+# 'meteor add' and 'meteor remove' will edit this file for you,
+# but you can also edit it by hand.
+
+reactive-var@1.0.10
+less@2.7.4
+iron:router
+fastclick@1.0.12
+tap:i18n
+3stack:bignumber
+zimme:iron-router-active
+yasinuslu:blaze-meta
+numeral:numeral
+ethereum:web3
+ethereum:accounts@0.3.5
+ethereum:elements
+ethereum:tools
+ethereum:blocks
+frozeman:persistent-minimongo
+frozeman:storage
+frozeman:template-var
+frozeman:reactive-timer
+mrt:moment
+dburles:collection-helpers
+matb33:collection-hooks
+raix:handlebar-helpers
+chuangbo:cookie
+markdown@1.0.10
+meteor-base@1.0.4
+mobile-experience@1.0.4
+mongo@1.1.10
+blaze-html-templates@1.0.4
+session@1.1.6
+jquery@1.11.9
+tracker@1.1.0
+logging@1.1.14
+reload@1.1.10
+random@1.0.10
+ejson@1.0.12
+spacebars@1.0.12
+check@1.2.3
+silentcicero:solc
+standard-minifier-css
+standard-minifier-js
+chart:chart
