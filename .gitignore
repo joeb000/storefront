@@ -1,0 +1,5 @@
+/storefront-market-simulator/bin/
+/storefront-market-simulator/*.log
+/storefront-market-simulator/*.log.*
+/storefront-market-simulator/.*
+/deploy
