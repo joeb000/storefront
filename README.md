@@ -6,7 +6,7 @@ Storefront is a venture design prototype aimed at exploring blockchain and IoT t
 Storefront is a network of smart modules, which can gain insight into consumer behavior and market demand in a collaborative and dynamic way, and can be connected to very different physical trading spaces across the city, from supermarket shelves or bookstores, to traditional vending machines, making them part of a single and comprehensive market.
 
 This repository contains three (semi) independent software prototypes:
- * Backend - smart contracts
- * Frontend - Dapp dashboard
- * Market simulator and curation algorithm
+ * [Backend](/contracts) - smart contracts
+ * [Frontend](/meteor-storefront) - Dapp dashboard
+ * [Market simulator](/storefront-market-simulator) and curation algorithm
   
