@@ -26,7 +26,7 @@ public class Main {
 	
 	
 	private static Simulation dumbMode(){
-		String dbName = "storefront_dumb.db";
+		String dbName = "output/storefront_dumb.db";
 		System.setProperty("storefront.db.name", dbName);
 		
 		DumbMode mode = new DumbMode();
@@ -37,7 +37,7 @@ public class Main {
 	}
 	
 	private static Simulation filledMode(){
-		String dbName = "storefront_filled.db";
+		String dbName = "output/storefront_filled.db";
 		System.setProperty("storefront.db.name", dbName);
 
 		FilledMode mode = new FilledMode();
@@ -48,13 +48,13 @@ public class Main {
 	}
 	
 	private static Simulation responsiveMode(){
-		String dbName = "storefront_responsive.db";
+		String dbName = "output/storefront_responsive.db";
 		System.setProperty("storefront.db.name", dbName);
 
 		ResponsiveMode mode = new ResponsiveMode();
 		mode.setDatabaseFileName(dbName);
 		mode.setRestockPeriod(15);
-		mode.setSimulationRounds(3010);
+		mode.setSimulationRounds(301);
 		return mode;
 	}
 }
