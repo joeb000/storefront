@@ -10,3 +10,8 @@ This repository contains three (semi) independent software prototypes:
  * [Frontend](/meteor-storefront) - Dapp dashboard
  * [Market simulator](/storefront-market-simulator) and curation algorithm
   
+Storefront Team:
+ * Jerónimo van Schendel Erice
+ * Courtney Chow
+ * Rob Sieg
+ * Joe Bernitt
