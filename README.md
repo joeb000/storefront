@@ -1,4 +1,5 @@
-# storefront   ![storefront](/docs/pics/sf_logo_small.png)
+![storefront](/docs/pics/sf_logo_small.png)
+# storefront
 
 Backend prototype of venture concept design for a smart network of ownerless, "vending-machine-like" storefronts.
 
