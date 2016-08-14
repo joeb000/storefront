@@ -9,7 +9,9 @@ This repository contains three (semi) independent software prototypes:
  * [Backend](/contracts) - smart contracts
  * [Frontend](/meteor-storefront) - Dapp dashboard
  * [Market simulator](/storefront-market-simulator) and curation algorithm
-  
+
+
+
 Storefront Team:
  * Jerónimo van Schendel Erice
  * Courtney Chow
