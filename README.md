@@ -1,4 +1,5 @@
-# storefront
+# storefront   ![storefront](/docs/pics/sf_logo_small.png)
+
 Backend prototype of venture concept design for a smart network of ownerless, "vending-machine-like" storefronts.
 
 These instructions assume that you already have a working ethereum node with an interactive javascript console. Using the testnet or a private chain is highly recommended so that you don't lose any actual ether.
