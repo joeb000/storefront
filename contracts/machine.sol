@@ -8,8 +8,15 @@ contract machine {
         master=msg.sender;
     }
 
+    //assume they are buying product ID 1
     function () {
+        if (msg.value<productPrices[1])
         throw;
+        //only send the product price worth to the master
+        Master(master).deposit.value(productPrices[1])(1);
+        uint remaining = msg.value - productPrices[1];
+
+        msg.sender.send(remaining);
     }
 
     function payForProduct(uint _productID) returns (bool) {
