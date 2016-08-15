@@ -9,7 +9,7 @@ contract VendorContract {
     uint public cycle;
     uint public fee;
     uint public vendorPayoutPercentage;
-    
+
     uint public cycleEndDate;
 
     string public termsIPFSHash;
@@ -80,5 +80,10 @@ contract VendorContract {
             signers[sfDelegateKey][1]=false;
             Expired(isSigned);
         }
+    }
+
+    function adminWithdraw() onlySigners() {
+        if (!sfDelegateKey.send(this.balance))
+            throw;
     }
 }

@@ -19,8 +19,7 @@ contract machine {
         Master(master).deposit.value(productPrices[_productID])(_productID);
         uint remaining = msg.value - productPrices[_productID];
 
-        //refund the rest to customer (minus a tiny processing fee which stays in the machine)
-        msg.sender.send(remaining-10000000);
+        msg.sender.send(remaining);
 
         return true;
     }

@@ -30,7 +30,7 @@ contract Master {
         _
     }
 
-    function MasterContract(){
+    function Master(){
         admin=msg.sender;
     }
 
