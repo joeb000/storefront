@@ -1,4 +1,4 @@
-var myevent = mymaster.MachinePayed();
+var myevent = master.MachinePayed();
 myevent.watch(function(error, result){
     if (!error){
       console.log(" ")
@@ -12,7 +12,7 @@ myevent.watch(function(error, result){
 });
 
 
-var myevent2 = mymaster.ContractCreated();
+var myevent2 = master.ContractCreated();
 myevent2.watch(function(error, result){
     if (!error){
       console.log(" ")
@@ -25,7 +25,7 @@ myevent2.watch(function(error, result){
     }
 });
 
-var routedEvent = mymaster.PaymentRouted();
+var routedEvent = master.PaymentRouted();
 routedEvent.watch(function(error, result){
     if (!error){
       console.log(" ")
@@ -38,7 +38,7 @@ routedEvent.watch(function(error, result){
     }
 });
 
-var newProductEvent = mymaster.NewProductAdded();
+var newProductEvent = master.NewProductAdded();
 newProductEvent.watch(function(error, result){
     if (!error){
       console.log(" ")
@@ -54,7 +54,7 @@ newProductEvent.watch(function(error, result){
     }
 });
 
-var addProductToMachineEvent = mymaster.AddedProductToMachine();
+var addProductToMachineEvent = master.AddedProductToMachine();
 addProductToMachineEvent.watch(function(error, result){
     if (!error){
       console.log(" ")
@@ -70,7 +70,7 @@ addProductToMachineEvent.watch(function(error, result){
     }
 });
 
-var priceUpdateEvent = mymaster.PriceUpdated();
+var priceUpdateEvent = master.PriceUpdated();
 priceUpdateEvent.watch(function(error, result){
     if (!error){
       console.log(" ")
@@ -89,7 +89,7 @@ priceUpdateEvent.watch(function(error, result){
 ///    event ContractSigned(address from);
 ///    event PaymentSent(address vendor, uint vendorAmount, address sf, uint sfamount);
 
-var paymentReceived = myvendor.PaymentReceived();
+var paymentReceived = vendorcontract.PaymentReceived();
 paymentReceived.watch(function(error, result){
     if (!error){
       console.log(" ");
@@ -102,7 +102,7 @@ paymentReceived.watch(function(error, result){
     }
 });
 
-var paymentRejected = myvendor.PaymentRejected();
+var paymentRejected = vendorcontract.PaymentRejected();
 paymentRejected.watch(function(error, result){
     if (!error){
       console.log(" ");
@@ -115,7 +115,7 @@ paymentRejected.watch(function(error, result){
     }
 });
 
-var paymentSent = myvendor.PaymentSent();
+var paymentSent = vendorcontract.PaymentSent();
 paymentSent.watch(function(error, result){
     if (!error){
       console.log(" ");
@@ -130,7 +130,7 @@ paymentSent.watch(function(error, result){
 });
 
 
-var contractSigned = myvendor.ContractSigned();
+var contractSigned = vendorcontract.ContractSigned();
 contractSigned.watch(function(error, result){
     if (!error){
       console.log(" ");
@@ -143,7 +143,7 @@ contractSigned.watch(function(error, result){
     }
 });
 
-var expiredEvent = myvendor.Expired();
+var expiredEvent = vendorcontract.Expired();
 expiredEvent.watch(function(error, result){
     if (!error){
       console.log(" ");
