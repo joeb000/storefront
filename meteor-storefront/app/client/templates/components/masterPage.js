@@ -13,7 +13,6 @@ The vendor contract template.
 
 // Construct Multiply Contract Object and contract instance
 var contractInstance;
-var admin = "0x12218fcf1ff0349c979cceffb2f29567e9d916f6";
 var mastercontractContract = web3.eth.contract([{"constant":false,"inputs":[{"name":"_from","type":"address"},{"name":"_productID","type":"uint256"},{"name":"_value","type":"uint256"}],"name":"routPayment","outputs":[],"type":"function"},{"constant":false,"inputs":[],"name":"createNewMachineContract","outputs":[{"name":"","type":"address"}],"type":"function"},{"constant":false,"inputs":[{"name":"_productID","type":"uint256"},{"name":"_newPrice","type":"uint256"}],"name":"updateProductPrice","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_productID","type":"uint256"}],"name":"deposit","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_machineID","type":"address"},{"name":"_productID","type":"uint256"}],"name":"addProductToMachine","outputs":[],"type":"function"},{"constant":false,"inputs":[{"name":"_price","type":"uint256"},{"name":"_vendor","type":"address"}],"name":"addNewProduct","outputs":[{"name":"","type":"uint256"}],"type":"function"},{"constant":true,"inputs":[],"name":"admin","outputs":[{"name":"","type":"address"}],"type":"function"},{"inputs":[],"type":"constructor"},{"anonymous":false,"inputs":[{"indexed":false,"name":"machineID","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"MachinePayed","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"newMachineID","type":"address"}],"name":"ContractCreated","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"routedAddress","type":"address"},{"indexed":false,"name":"amount","type":"uint256"}],"name":"PaymentRouted","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"vendorID","type":"address"},{"indexed":false,"name":"productID","type":"uint256"},{"indexed":false,"name":"price","type":"uint256"}],"name":"NewProductAdded","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"newMachineID","type":"address"},{"indexed":false,"name":"productID","type":"uint256"},{"indexed":false,"name":"productPrice","type":"uint256"}],"name":"AddedProductToMachine","type":"event"},{"anonymous":false,"inputs":[{"indexed":false,"name":"_productID","type":"uint256"},{"indexed":false,"name":"_newPrice","type":"uint256"}],"name":"PriceUpdated","type":"event"}]);
 var aMachineNickname;
 var aProductName;
@@ -49,6 +48,7 @@ function addToProductTable(aProductName, aProductID, aProductPrice, aVendorID) {
 }
 
 function runContractListeners(mymaster) {
+  console.log("running listeners " + mymaster.address )
 
   var myevent = mymaster.MachinePayed();
   myevent.watch(function(error, result){
@@ -194,7 +194,9 @@ Template['components_masterPage'].events({
 
   "click [data-action='createMachine']": function(event, template){
     aMachineNickname = template.find("#machineNickname").value;
-    contractInstance.createNewMachineContract({from:admin,gas:4000000},function(err, result){
+    console.log("Admin is: "+web3.eth.coinbase)
+
+    contractInstance.createNewMachineContract({from:web3.eth.coinbase,gas:4000000},function(err, result){
       console.log("Result is: "+result)
         if(err)
           console.log("Error when calling for fee"+ err);
@@ -207,7 +209,7 @@ Template['components_masterPage'].events({
     aProductName = template.find("#addProductName").value;
 
 
-    contractInstance.addNewProduct(web3.toWei(aPrice),aVendorID,{from:admin,gas:4000000},function(err, result){
+    contractInstance.addNewProduct(web3.toWei(aPrice),aVendorID,{from:web3.eth.coinbase,gas:4000000},function(err, result){
       console.log("Result is: "+result)
         if(err)
           console.log("Error when calling for fee"+ err);
@@ -219,7 +221,7 @@ Template['components_masterPage'].events({
     machineToStock = template.find("#stockMachineID").value;
     productIDToStock = template.find("#stockProductID").value;
 
-    contractInstance.addProductToMachine(machineToStock,productIDToStock,{from:admin,gas:4000000},function(err, result){
+    contractInstance.addProductToMachine(machineToStock,productIDToStock,{from:web3.eth.coinbase,gas:4000000},function(err, result){
       console.log("Result is: "+result)
         if(err)
           console.log("Error when calling for fee"+ err);

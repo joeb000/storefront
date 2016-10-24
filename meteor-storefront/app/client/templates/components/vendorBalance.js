@@ -14,7 +14,7 @@ The balance template
 // when the template is rendered
 Template['components_vendbalance'].onRendered(function() {
     // get coinbase address
-    var coinbase = "0xf7caaeb6aa9a57774d41c765631c84c28b7aa588";
+    var coinbase = web3.eth.accounts[2];
 
     // balance update interval
     this.updateBalance = Meteor.setInterval(function() {
